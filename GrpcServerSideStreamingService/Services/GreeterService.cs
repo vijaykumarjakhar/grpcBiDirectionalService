@@ -21,9 +21,10 @@ namespace GrpcServerSideStreamingService
 
             while (await requestStream.MoveNext()) {
                
-                string input = string.Format("Hello {0} DOB {1}", requestStream.Current.Name, requestStream.Current.DOB);
-                Console.WriteLine("Request Recived  {0}",input);
-                await responseStream.WriteAsync(new GreetMultiResponce() { Message = input });
+                string input = string.Format("{0} {1}", requestStream.Current.Name, requestStream.Current.DOB);
+                Console.WriteLine("Message  {0}",input);
+                var inputdta = Console.ReadLine();
+                await responseStream.WriteAsync(new GreetMultiResponce() { Message ="Recived :" +inputdta });
             }
             
         }
