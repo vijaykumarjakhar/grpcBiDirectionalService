@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServerSideStreamingService";
+
+package greet;
+
+// The greeting service definition.
+service GreetStreamService{
+  // Sends a greeting
+  rpc GetGreetStreamMethod (stream GreetMultiRequest) returns (stream GreetMultiResponce);
+}
+
+// The request message containing the user's name.
+message GreetMultiRequest {
+  string name = 1;
+ string DOB=2;
+}
+
+// The response message containing the greetings.
+message GreetMultiResponce {
+  string message = 1;
+}
